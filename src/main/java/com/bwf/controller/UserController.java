@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.bwf.dao.UserMapper;
+import com.bwf.entity.Menu;
 import com.bwf.entity.User;
 import com.bwf.service.IUserService;
 import com.bwf.utils.StringUtils;
@@ -44,6 +45,7 @@ public class UserController {
 		logger.info( "password : {}" , user.getPassword() );
 		
 		// 执行登录 功能 
+		// 登录失败， 返回null , 登录成功， 返回 带有 menu 的 user 对象
 		User loginUser = userService.login( user );
 		
 		if ( loginUser == null ) {
@@ -57,9 +59,23 @@ public class UserController {
 			// 登录成功
 			logger.info("登录成功");
 			
+			//logger.warn(  loginUser.getUserId() + "" );
+			
+			// 查询 菜单集合
+			//User userWithMenus = userService.getMenusByUserId( loginUser.getUserId() );
+//
+//			
+//			logger.warn(
+//					"{} , {} , {} , {}" ,
+//					userWithMenus.getUserId() ,
+//					userWithMenus.getUsername() , 
+//					userWithMenus.getNickname() ,
+//					userWithMenus.getAvater()
+//			);
+			
 			// 写入 session 
 			session.setAttribute("user", loginUser );
-			
+
 			// 跳转到 首页
 			return "redirect:/index";
 		}
