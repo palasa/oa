@@ -25,10 +25,33 @@ public class UserMapperTest {
 	public void testGetMenusAndOperatesByUserId(){
 		User user = userMapper.getMenusAndOperatesByUserId(1);
 		logger.info( user.getOperates().size() + "" );
-		
-		for( Operate o : user.getOperates() ) {
-			logger.info( o.getOperateName() );
-		}
+
 		Assert.assertNotEquals( 0 , user.getOperates().size() );
+	}
+	
+	@Test
+	public void testGetAllUser(){
+		Assert.assertEquals( 25 , userMapper.getAllUser().size() ); 
+//		for( User user : userMapper.getAllUser() ) {
+//			if ( user.getLeader() != null ) {
+//				logger.info( user.getLeader().getNickname() );
+//			}
+//		}
+	}
+	
+	@Test
+	public void testGetAllUsersByPage(){
+		Assert.assertEquals( 10 , userMapper.getAllUsersByPage(1, 10).size() );
+		for( User user : userMapper.getAllUsersByPage(1, 10) ) {
+			if ( user.getLeader() != null ) {
+				logger.info( user.getLeader().getNickname() );
+			}
+		}
+	}
+	
+	@Test
+	public void deleteMulti(){
+		Integer[] idArr = {4,5,6};
+		userMapper.deleteMulti( idArr );
 	}
 }

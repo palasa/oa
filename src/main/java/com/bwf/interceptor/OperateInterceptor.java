@@ -16,12 +16,13 @@ public class OperateInterceptor extends HandlerInterceptorAdapter{
 		
 		// 获取 请求中的 url 地址 
 		
-		// /oa/roster/show
+		// 	/oa/roster/show
 		System.out.println( request.getRequestURI() );
 		
 		boolean sessionContainsUri = false;
 		User user = (User) request.getSession().getAttribute("user"); 
 		for( Operate o : user.getOperates() ) {
+			System.out.println( o.getOperateAction() );
 			if ( request.getRequestURI().contains( o.getOperateAction() ) ) {
 				sessionContainsUri = true;
 			}

@@ -25,8 +25,7 @@
     
   
     <!-- 注册拦截器 -->
-    <mvc:interceptors>
-    	
+    <mvc:interceptors>    	
     
     	<!-- 登录拦截器,未登录用户访问页面，直接跳转到登录页 -->
     	<mvc:interceptor>

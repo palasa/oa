@@ -2,14 +2,22 @@ package com.bwf.entity;
 
 import java.util.List;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+
+
 public class User {
 
+	
 	private int userId;
 	
+	@NotNull
 	private String username;
+	
 	
 	private String password;
 	
+	@Pattern(regexp="^[\u4e00-\u9fa5]{2,4}$")
 	private String nickname;
 	
 	private String avater;
@@ -18,7 +26,24 @@ public class User {
 	
 	private List<com.bwf.entity.Operate> operates;
 	
+	private User leader;
+	
 
+	
+
+	@Override
+	public String toString() {
+		return "User [userId=" + userId + ", username=" + username + ", password=" + password + ", nickname=" + nickname
+				+ ", avater=" + avater + "]";
+	}
+
+	public User getLeader() {
+		return leader;
+	}
+
+	public void setLeader(User leader) {
+		this.leader = leader;
+	}
 
 	public List<com.bwf.entity.Operate> getOperates() {
 		return operates;
