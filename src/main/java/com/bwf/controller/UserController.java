@@ -162,6 +162,7 @@ public class UserController {
 		return "user/edit";
 	}
 	
+	// 修改员工信息
 	@GetMapping("doEdit")
 	public String doEdit( User user , String resetPassword ){
 		logger.info( "修改的员工信息： {}" , user );

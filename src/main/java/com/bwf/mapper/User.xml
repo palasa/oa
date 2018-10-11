@@ -104,6 +104,7 @@
     	where user_id = #{userId}
     </update>
     
+    <!-- 修改并重置密码 -->
     <update id="updateWithPassword" parameterType="com.bwf.entity.User">
     	update `user` set     		
     		password = '202CB962AC59075B964B07152D234B70' , 
@@ -112,6 +113,7 @@
     	where user_id = #{userId}
     </update>
     
+    <!-- 修改不重置密码 -->
     <update id="updateWithoutPassword" parameterType="com.bwf.entity.User">
     	update `user` set     	
     		nickname = #{nickname} ,

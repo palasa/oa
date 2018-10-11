@@ -22,7 +22,7 @@ public class OperateInterceptor extends HandlerInterceptorAdapter{
 		boolean sessionContainsUri = false;
 		User user = (User) request.getSession().getAttribute("user"); 
 		for( Operate o : user.getOperates() ) {
-			System.out.println( o.getOperateAction() );
+			// System.out.println( o.getOperateAction() );
 			if ( request.getRequestURI().contains( o.getOperateAction() ) ) {
 				sessionContainsUri = true;
 			}
