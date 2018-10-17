@@ -33,6 +33,8 @@ public interface UserMapper {
 	void updateWithPassword(User user);
 
 	void updateWithoutPassword(User user);
+
+	User getUserWithLeader(User currentUser);
 	
 	
 }

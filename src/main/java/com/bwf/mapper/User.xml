@@ -67,6 +67,11 @@
    		select * from `user`
    	</select>
    	
+   	<!-- 根据用户，查询他的上级 -->
+   	<select id="getUserWithLeader" parameterType="com.bwf.entity.User" resultMap="simpleUser">
+   		select * from user where user_id = #{userId}   	
+   	</select>
+   	
    	<!-- 根据页码查询所有用户数据 -->
    	<select id="getAllUsersByPage" resultMap="simpleUser">
    		select * from `user` limit #{p} , #{pageSize}

@@ -17,6 +17,14 @@
 			null , #{affairModuleName} , #{affairModuleProducerId} 
 		)
 	</insert>
+	
+	<select id="getAll" resultMap="affairModule">
+		select * from affair_module
+	</select>
+	
+	<select id="getAffairModuleById" parameterType="int" resultMap="affairModule">
+		select * from affair_module where affair_module_id = #{id}
+	</select>
 
 
 </mapper>

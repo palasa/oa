@@ -10,6 +10,7 @@
 		<result column="order" property="order"/>
 		<result column="approver_id" property="approverId"/>
 		<result column="affair_module_id" property="affairModuleId"/>
+		<association property="user" javaType="com.bwf.entity.User" column="approver_id" resultMap="com.bwf.dao.UserMapper.simpleUser"></association>
 	</resultMap>
 	
 	
@@ -19,6 +20,12 @@
 			( null ,  #{chain.order} , #{chain.approverId} ,  #{chain.affairModuleId}  ) 
 		</foreach>
 	</insert>
+	
+	<select id="getAffairModuleChainsByAffairModuleId" parameterType="int" resultMap="affairModuleChain">
+		select * from affair_module_chain 
+		left outer  join user on affair_module_chain.approver_id = user.user_id
+		where affair_module_id = #{id};
+	</select>
 
 
 </mapper>

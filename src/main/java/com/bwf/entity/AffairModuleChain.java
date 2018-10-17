@@ -8,6 +8,18 @@ public class AffairModuleChain {
 	private Integer approverId;
 	
 	private Integer affairModuleId;
+	
+	private User user;
+	
+	
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
 
 	public Integer getAffairModuleChainId() {
 		return affairModuleChainId;

@@ -3,6 +3,8 @@ package com.bwf.service.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,6 +30,7 @@ public class AffairModuleServiceImpl implements IAffairModuleService {
 	com.bwf.dao.AffairModuleChainMapper affairModuleChainMapper;
 	
 	@Override
+	@Transactional
 	public void add(AffairModule affairModule, String[] optionName, Integer[] optionId, 
 			String[] optionData, Integer[] approverId) {
 		// 公文模板表 新增一条数据
@@ -62,6 +65,18 @@ public class AffairModuleServiceImpl implements IAffairModuleService {
 		
 		affairModuleChainMapper.add( chains );
 		
+	}
+
+	@Override
+	public List<AffairModule> getAll() {
+		// TODO Auto-generated method stub
+		return affairModuleMapper.getAll();
+	}
+
+	@Override
+	public AffairModule getAffairModuleById(Integer id) {
+		// TODO Auto-generated method stub
+		return affairModuleMapper.getAffairModuleById(id);
 	}
 
 }
